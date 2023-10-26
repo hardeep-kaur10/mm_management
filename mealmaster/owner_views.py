@@ -49,9 +49,11 @@ def ADD_STUDENT(request):
         if Customeruser.objects.filter(username=username).exists():
             messages.warning(request,'usernaame already registered')
             return redirect('add_student')
-        if Student.objects.filter(roll_num=Roll_num).exists():
-                messages.warning(request, 'Roll number already exists')
-                return redirect('add_student')
+        if Student.objects.filter(roll_number=Roll_num).exists():
+            messages.warning(request,'roll number already registered')
+            return redirect('add_student')
+        
+    
 
         else:
             user = Customeruser(
@@ -69,6 +71,8 @@ def ADD_STUDENT(request):
             Course = course.objects.get(id = course_id)
             # session_year = Session_Year.objects.get(id = session_year_id)
             session_year = Session_Year.objects.get(id = session_year_id) 
+
+            
             student = Student.objects.create(
                 user = user,
                 address =address,
