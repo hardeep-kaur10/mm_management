@@ -1,13 +1,16 @@
 from django.contrib import admin
+from .models import Customeruser
 from .models import*
 from django.contrib.auth.admin import UserAdmin
+from django.contrib import admin
+from app.models import Customeruser 
 
 from app.models import Customeruser,course,Session_Year,Student,Staff,Staff_Notification,Mess
 
 # Register your models here.
 
 class UserModel(admin.ModelAdmin):
-    list_display=['username','user_type']
+    list_display=['username','get_user_type_display']
 
 
 
